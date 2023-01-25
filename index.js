@@ -229,6 +229,12 @@ function AuthCacheMW(options) {
             const dataFromCache = await authCache.getData(user._id);
             if (dataFromCache && dataFromCache.userData) {
                 user = Object.assign(user, dataFromCache.userData);
+                if (!user.apps) {
+                    user.apps = [];
+                }
+                if (user.accessControl && user.accessControl.apps) {
+                    user.apps = user.accessControl.apps.map(e => e._id);
+                }
             }
 
             let tokenHash = md5(token);
