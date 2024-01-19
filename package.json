@@ -1,6 +1,6 @@
 {
   "name": "@appveen/ds-auth-cache",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Authentication Cache for Data.Stack",
   "main": "index.js",
   "scripts": {
