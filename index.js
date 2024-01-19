@@ -4,6 +4,7 @@ const Redis = require('ioredis');
 const JWT = require('jsonwebtoken');
 const log4js = require('log4js');
 const version = require('./package.json').version;
+const _ = require('lodash');
 
 const host = process.env.CACHE_HOST || 'localhost';
 const port = process.env.CACHE_PORT ? parseInt(process.env.CACHE_PORT) : 6379;
@@ -125,7 +126,9 @@ AuthCache.prototype.getData = async function (username) {
     if (data && typeof data === 'string') {
         try {
             data = JSON.parse(data);
-        } catch (err) { }
+        } catch (err) {
+            logger.error('Data Parse Error');
+        }
     }
     return data;
 };
