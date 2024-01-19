@@ -131,7 +131,7 @@ AuthCache.prototype.getData = async function (username) {
 };
 
 AuthCache.prototype.setData = async function (username, data) {
-    let temp = await this.getData();
+    let temp = await this.getData(username);
     if (temp) {
         data = _.merge(temp, data);
     }
