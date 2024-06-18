@@ -199,7 +199,7 @@ function AuthCacheMW(options) {
     }
     return async function (req, res, next) {
         try {
-            if (options.permittedUrls.some(_url => compareURL(_url, req.path)) || req.path.indexOf('/health') > -1 || req.path.indexOf('/export') > -1) {
+            if (options.permittedUrls.some(_url => compareURL(_url, req.path)) || req.path.indexOf('/internal/health') > -1 || req.path.indexOf('/utils/export') > -1) {
                 return next();
             }
             logger.debug(`[${req.header('txnId')}] Validating token format`);
